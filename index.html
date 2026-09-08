@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scholarship Application Review System</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <h1>🎓 Scholarship Application Review System <small>v2.0 (Test Build)</small></h1>
+  <nav id="nav" class="hidden">
+    <span id="currentUser" data-testid="current-user"></span>
+    <button id="btnLogout" data-testid="btn-logout">Logout</button>
+  </nav>
+</header>
+
+<main class="container">
+
+  <!-- FR1: LOGIN -->
+  <section class="card" id="pageLogin" data-testid="page-login">
+    <h2>User Login</h2>
+    <label for="email">University Email</label>
+    <input type="text" id="email" data-testid="input-email" placeholder="name@student.university.edu">
+    <p class="err" id="errEmail" data-testid="err-email"></p>
+
+    <label for="password">Password</label>
+    <input type="password" id="password" data-testid="input-password">
+    <p class="err" id="errPassword" data-testid="err-password"></p>
+
+    <label for="role">Login As</label>
+    <select id="role" data-testid="select-role">
+      <option value="applicant">Applicant (Student)</option>
+      <option value="reviewer">Reviewer (Committee)</option>
+    </select>
+
+    <button id="btnLogin" data-testid="btn-login">Login</button>
+    <p class="alert" id="loginAlert" data-testid="login-alert"></p>
+  </section>
+
+  <!-- FR2–FR5: APPLICATION FORM -->
+  <section class="card hidden" id="pageApplicant" data-testid="page-applicant">
+    <h2>Scholarship Application Form</h2>
+
+    <label for="fullName">Full Name *</label>
+    <input type="text" id="fullName" data-testid="input-fullname">
+    <p class="err" id="errFullName" data-testid="err-fullname"></p>
+
+    <label for="age">Age * (18–25)</label>
+    <input type="number" id="age" data-testid="input-age">
+    <p class="err" id="errAge" data-testid="err-age"></p>
+
+    <label for="gpa">GPA * (0.00–4.00 · minimum 3.00 to be eligible)</label>
+    <input type="text" id="gpa" data-testid="input-gpa">
+    <p class="err" id="errGpa" data-testid="err-gpa"></p>
+
+    <label for="dob">Date of Birth *</label>
+    <input type="date" id="dob" data-testid="input-dob">
+    <p class="err" id="errDob" data-testid="err-dob"></p>
+
+    <label for="transcript">Transcript * (PDF only, max 5MB)</label>
+    <input type="file" id="transcript" data-testid="input-transcript" accept=".pdf">
+    <p class="err" id="errTranscript" data-testid="err-transcript"></p>
+
+    <button id="btnSubmitApp" data-testid="btn-submit-application">Submit Application</button>
+    <button class="ghost" id="btnClear" data-testid="btn-clear">Clear Form</button>
+    <p class="alert" id="appAlert" data-testid="app-alert"></p>
+  </section>
+
+  <!-- FR6–FR7: REVIEWER DASHBOARD -->
+  <section class="card hidden" id="pageReviewer" data-testid="page-reviewer">
+    <h2>Reviewer Dashboard</h2>
+    <table data-testid="table-applications">
+      <thead>
+        <tr><th>ID</th><th>Name</th><th>Age</th><th>GPA</th><th>Status</th><th>Score</th><th>Action</th></tr>
+      </thead>
+      <tbody id="appTableBody"></tbody>
+    </table>
+    <p class="alert" id="revAlert" data-testid="reviewer-alert"></p>
+  </section>
+
+  <!-- FR8: EMAIL LOG -->
+  <section class="card hidden" id="pageLog" data-testid="page-log">
+    <h2>📧 Email Notification Log (Simulated)</h2>
+    <div class="log" id="emailLog" data-testid="email-log">[SYSTEM] Ready...</div>
+    <button class="ghost" id="btnResetData" data-testid="btn-reset-data">Reset All Test Data</button>
+  </section>
+
+</main>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
